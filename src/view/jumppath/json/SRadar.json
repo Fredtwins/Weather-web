@@ -1,0 +1,446 @@
+{
+    "msg": "success",
+    "code": 200,
+    "data": {
+        "FoShan": [
+            {
+                "id": 5147,
+                "area": "FoShan",
+                "datetime": "2018-11-09 11:00:00",
+                "formatTime": "2018-11-09 11:00:00",
+                "type": "S",
+                "path": "/radar/fs/20181109.110000.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5148,
+                "area": "FoShan",
+                "datetime": "2018-11-09 10:54:00",
+                "formatTime": "2018-11-09 10:54:00",
+                "type": "S",
+                "path": "/radar/fs/20181109.105400.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5149,
+                "area": "FoShan",
+                "datetime": "2018-11-09 10:48:01",
+                "formatTime": "2018-11-09 10:48:01",
+                "type": "S",
+                "path": "/radar/fs/20181109.104801.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5150,
+                "area": "FoShan",
+                "datetime": "2018-11-09 10:42:01",
+                "formatTime": "2018-11-09 10:42:01",
+                "type": "S",
+                "path": "/radar/fs/20181109.104201.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5151,
+                "area": "FoShan",
+                "datetime": "2018-11-09 10:36:00",
+                "formatTime": "2018-11-09 10:36:00",
+                "type": "S",
+                "path": "/radar/fs/20181109.103600.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5152,
+                "area": "FoShan",
+                "datetime": "2018-11-09 10:30:01",
+                "formatTime": "2018-11-09 10:30:01",
+                "type": "S",
+                "path": "/radar/fs/20181109.103001.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5153,
+                "area": "FoShan",
+                "datetime": "2018-11-09 10:24:00",
+                "formatTime": "2018-11-09 10:24:00",
+                "type": "S",
+                "path": "/radar/fs/20181109.102400.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5154,
+                "area": "FoShan",
+                "datetime": "2018-11-09 10:18:01",
+                "formatTime": "2018-11-09 10:18:01",
+                "type": "S",
+                "path": "/radar/fs/20181109.101801.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5155,
+                "area": "FoShan",
+                "datetime": "2018-11-09 10:12:00",
+                "formatTime": "2018-11-09 10:12:00",
+                "type": "S",
+                "path": "/radar/fs/20181109.101200.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5156,
+                "area": "FoShan",
+                "datetime": "2018-11-09 10:06:01",
+                "formatTime": "2018-11-09 10:06:01",
+                "type": "S",
+                "path": "/radar/fs/20181109.100601.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5157,
+                "area": "FoShan",
+                "datetime": "2018-11-09 10:00:00",
+                "formatTime": "2018-11-09 10:00:00",
+                "type": "S",
+                "path": "/radar/fs/20181109.100000.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5158,
+                "area": "FoShan",
+                "datetime": "2018-11-09 09:54:01",
+                "formatTime": "2018-11-09 09:54:01",
+                "type": "S",
+                "path": "/radar/fs/20181109.095401.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            }
+        ],
+        "GuangZhou": [
+            {
+                "id": 5178,
+                "area": "GuangZhou",
+                "datetime": "2018-11-09 11:00:00",
+                "formatTime": "2018-11-09 11:00:00",
+                "type": "S",
+                "path": "/radar/gz/20181109.110000.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5179,
+                "area": "GuangZhou",
+                "datetime": "2018-11-09 10:54:00",
+                "formatTime": "2018-11-09 10:54:00",
+                "type": "S",
+                "path": "/radar/gz/20181109.105400.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5180,
+                "area": "GuangZhou",
+                "datetime": "2018-11-09 10:48:01",
+                "formatTime": "2018-11-09 10:48:01",
+                "type": "S",
+                "path": "/radar/gz/20181109.104801.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5181,
+                "area": "GuangZhou",
+                "datetime": "2018-11-09 10:42:01",
+                "formatTime": "2018-11-09 10:42:01",
+                "type": "S",
+                "path": "/radar/gz/20181109.104201.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5182,
+                "area": "GuangZhou",
+                "datetime": "2018-11-09 10:36:00",
+                "formatTime": "2018-11-09 10:36:00",
+                "type": "S",
+                "path": "/radar/gz/20181109.103600.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5183,
+                "area": "GuangZhou",
+                "datetime": "2018-11-09 10:30:01",
+                "formatTime": "2018-11-09 10:30:01",
+                "type": "S",
+                "path": "/radar/gz/20181109.103001.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5184,
+                "area": "GuangZhou",
+                "datetime": "2018-11-09 10:24:00",
+                "formatTime": "2018-11-09 10:24:00",
+                "type": "S",
+                "path": "/radar/gz/20181109.102400.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5185,
+                "area": "GuangZhou",
+                "datetime": "2018-11-09 10:18:01",
+                "formatTime": "2018-11-09 10:18:01",
+                "type": "S",
+                "path": "/radar/gz/20181109.101801.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5186,
+                "area": "GuangZhou",
+                "datetime": "2018-11-09 10:12:00",
+                "formatTime": "2018-11-09 10:12:00",
+                "type": "S",
+                "path": "/radar/gz/20181109.101200.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5187,
+                "area": "GuangZhou",
+                "datetime": "2018-11-09 10:06:01",
+                "formatTime": "2018-11-09 10:06:01",
+                "type": "S",
+                "path": "/radar/gz/20181109.100601.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5188,
+                "area": "GuangZhou",
+                "datetime": "2018-11-09 10:00:00",
+                "formatTime": "2018-11-09 10:00:00",
+                "type": "S",
+                "path": "/radar/gz/20181109.100000.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5189,
+                "area": "GuangZhou",
+                "datetime": "2018-11-09 09:54:01",
+                "formatTime": "2018-11-09 09:54:01",
+                "type": "S",
+                "path": "/radar/gz/20181109.095401.02.19.200.png",
+                "createTime": "2018-12-05 10:57:04"
+            }
+        ],
+        "ZhaoQing": [
+            {
+                "id": 5209,
+                "area": "ZhaoQing",
+                "datetime": "2018-11-09 03:00:00",
+                "formatTime": "2018-11-09 03:00:00",
+                "type": "S",
+                "path": "/radar/zq/ZQR201811090300.GIF",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5210,
+                "area": "ZhaoQing",
+                "datetime": "2018-11-09 02:54:00",
+                "formatTime": "2018-11-09 02:54:00",
+                "type": "S",
+                "path": "/radar/zq/ZQR201811090254.GIF",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5211,
+                "area": "ZhaoQing",
+                "datetime": "2018-11-09 02:48:00",
+                "formatTime": "2018-11-09 02:48:00",
+                "type": "S",
+                "path": "/radar/zq/ZQR201811090248.GIF",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5212,
+                "area": "ZhaoQing",
+                "datetime": "2018-11-09 02:42:00",
+                "formatTime": "2018-11-09 02:42:00",
+                "type": "S",
+                "path": "/radar/zq/ZQR201811090242.GIF",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5213,
+                "area": "ZhaoQing",
+                "datetime": "2018-11-09 02:36:00",
+                "formatTime": "2018-11-09 02:36:00",
+                "type": "S",
+                "path": "/radar/zq/ZQR201811090236.GIF",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5214,
+                "area": "ZhaoQing",
+                "datetime": "2018-11-09 02:30:00",
+                "formatTime": "2018-11-09 02:30:00",
+                "type": "S",
+                "path": "/radar/zq/ZQR201811090230.GIF",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5215,
+                "area": "ZhaoQing",
+                "datetime": "2018-11-09 02:24:00",
+                "formatTime": "2018-11-09 02:24:00",
+                "type": "S",
+                "path": "/radar/zq/ZQR201811090224.GIF",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5216,
+                "area": "ZhaoQing",
+                "datetime": "2018-11-09 02:18:00",
+                "formatTime": "2018-11-09 02:18:00",
+                "type": "S",
+                "path": "/radar/zq/ZQR201811090218.GIF",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5217,
+                "area": "ZhaoQing",
+                "datetime": "2018-11-09 02:12:00",
+                "formatTime": "2018-11-09 02:12:00",
+                "type": "S",
+                "path": "/radar/zq/ZQR201811090212.GIF",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5218,
+                "area": "ZhaoQing",
+                "datetime": "2018-11-09 02:06:00",
+                "formatTime": "2018-11-09 02:06:00",
+                "type": "S",
+                "path": "/radar/zq/ZQR201811090206.GIF",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5219,
+                "area": "ZhaoQing",
+                "datetime": "2018-11-09 02:00:00",
+                "formatTime": "2018-11-09 02:00:00",
+                "type": "S",
+                "path": "/radar/zq/ZQR201811090200.GIF",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5220,
+                "area": "ZhaoQing",
+                "datetime": "2018-11-09 01:54:00",
+                "formatTime": "2018-11-09 01:54:00",
+                "type": "S",
+                "path": "/radar/zq/ZQR201811090154.GIF",
+                "createTime": "2018-12-05 10:57:04"
+            }
+        ],
+        "China": [
+            {
+                "id": 5240,
+                "area": "China",
+                "datetime": "2018-10-18 07:18:00",
+                "formatTime": "2018-10-18 07:18:00",
+                "type": "S",
+                "path": "/radar/dat/2018/10/18/SEVP_AOC_RDCP_SLDAS_EBREF_ACHN_L88_PI_20181018071800001.PNG",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5241,
+                "area": "China",
+                "datetime": "2018-10-18 07:12:00",
+                "formatTime": "2018-10-18 07:12:00",
+                "type": "S",
+                "path": "/radar/dat/2018/10/18/SEVP_AOC_RDCP_SLDAS_EBREF_ACHN_L88_PI_20181018071200001.PNG",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5242,
+                "area": "China",
+                "datetime": "2018-10-18 07:06:00",
+                "formatTime": "2018-10-18 07:06:00",
+                "type": "S",
+                "path": "/radar/dat/2018/10/18/SEVP_AOC_RDCP_SLDAS_EBREF_ACHN_L88_PI_20181018070600001.PNG",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5243,
+                "area": "China",
+                "datetime": "2018-10-18 07:00:00",
+                "formatTime": "2018-10-18 07:00:00",
+                "type": "S",
+                "path": "/radar/dat/2018/10/18/SEVP_AOC_RDCP_SLDAS_EBREF_ACHN_L88_PI_20181018070000001.PNG",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5244,
+                "area": "China",
+                "datetime": "2018-10-18 06:54:00",
+                "formatTime": "2018-10-18 06:54:00",
+                "type": "S",
+                "path": "/radar/dat/2018/10/18/SEVP_AOC_RDCP_SLDAS_EBREF_ACHN_L88_PI_20181018065400001.PNG",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5245,
+                "area": "China",
+                "datetime": "2018-10-18 06:48:00",
+                "formatTime": "2018-10-18 06:48:00",
+                "type": "S",
+                "path": "/radar/dat/2018/10/18/SEVP_AOC_RDCP_SLDAS_EBREF_ACHN_L88_PI_20181018064800001.PNG",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5246,
+                "area": "China",
+                "datetime": "2018-10-18 06:42:00",
+                "formatTime": "2018-10-18 06:42:00",
+                "type": "S",
+                "path": "/radar/dat/2018/10/18/SEVP_AOC_RDCP_SLDAS_EBREF_ACHN_L88_PI_20181018064200001.PNG",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5247,
+                "area": "China",
+                "datetime": "2018-10-18 06:36:00",
+                "formatTime": "2018-10-18 06:36:00",
+                "type": "S",
+                "path": "/radar/dat/2018/10/18/SEVP_AOC_RDCP_SLDAS_EBREF_ACHN_L88_PI_20181018063600001.PNG",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5248,
+                "area": "China",
+                "datetime": "2018-10-18 06:30:00",
+                "formatTime": "2018-10-18 06:30:00",
+                "type": "S",
+                "path": "/radar/dat/2018/10/18/SEVP_AOC_RDCP_SLDAS_EBREF_ACHN_L88_PI_20181018063000001.PNG",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5249,
+                "area": "China",
+                "datetime": "2018-10-18 06:24:00",
+                "formatTime": "2018-10-18 06:24:00",
+                "type": "S",
+                "path": "/radar/dat/2018/10/18/SEVP_AOC_RDCP_SLDAS_EBREF_ACHN_L88_PI_20181018062400001.PNG",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5250,
+                "area": "China",
+                "datetime": "2018-10-18 06:18:00",
+                "formatTime": "2018-10-18 06:18:00",
+                "type": "S",
+                "path": "/radar/dat/2018/10/18/SEVP_AOC_RDCP_SLDAS_EBREF_ACHN_L88_PI_20181018061800001.PNG",
+                "createTime": "2018-12-05 10:57:04"
+            },
+            {
+                "id": 5251,
+                "area": "China",
+                "datetime": "2018-10-18 06:12:00",
+                "formatTime": "2018-10-18 06:12:00",
+                "type": "S",
+                "path": "/radar/dat/2018/10/18/SEVP_AOC_RDCP_SLDAS_EBREF_ACHN_L88_PI_20181018061200001.PNG",
+                "createTime": "2018-12-05 10:57:04"
+            }
+        ]
+    }
+}
