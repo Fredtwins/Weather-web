@@ -57,7 +57,7 @@
         <div><span></span>AQI <br><span>{{aqi}}</span></div>
         <div><span></span>气压 <br><span>{{pha}}</span></div>
         <div><span></span>湿度<br><span>{{u}}</span></div>
-        <div><span></span>风<br><span>{{windChinese}}</span></div>
+        <div><span></span>风向<br><span>{{windChinese}}</span></div>
       </div>
     </div>
     <!-- <van-loading v-show="loading" color="white" /> -->
@@ -81,9 +81,9 @@
             <div class="onebig">
               <div class="big-weathertab" v-for="(item, index) in weatherArray" :key="item.index">
                 <div class="new-weather">{{item.formatTime}}</div>
+                <div class="t-weathear"><img :src="item.w" alt=""></div>
                 <div class="img-weather">{{item.ws}}</div>
                 <div class="rainbow-weather">{{item.t}}</div>
-                <div class="t-weathear">{{item.w}}</div>
               </div>
             </div>
           </van-tab>
@@ -106,7 +106,7 @@ import filterAear from './indexfilter'
 import linkage from './linkage.json'
 import { Tab, Tabs, Loading } from 'vant';
 import { GethomeList, Getlinkage } from '../../api/home.js'
-import { ERR_OK } from '../../api/config.js'
+import { ERR_OK, imgweather } from '../../api/config.js'
 Vue.use(Tab).use(Tabs).use(Loading);
 
 export default {
@@ -137,6 +137,7 @@ export default {
     _getlatlon() {
       var _this = this
       window.addEventListener('message', function(event) {
+        console.log(event)
         // 接收位置信息
         if (event.data.lat && event.data.lng) {
           _this.lat = event.data.lat
@@ -155,6 +156,10 @@ export default {
                 _this.u = res.data.real.u
                 _this.aqi = res.data.real.aqi
                 _this.pha = res.data.real.p
+                for (var i = 0; i < res.data.nHours.length;i++) {
+                  var temp = `${imgweather}${res.data.nHours[i].w}.png`
+                  res.data.nHours[i].w = temp
+                }
                 _this.weatherArray = res.data.nHours
                 _this.loading = false
                 _this._Getrainecharts(res.data)
@@ -175,6 +180,7 @@ export default {
         serdata.push(obj.r5s[i].r5)
       }
       option = {
+        backgroundColor: '#3267b9',
         xAxis: {
           type: 'category',
           data: datatime,
@@ -217,14 +223,16 @@ export default {
       this.loading = true
       GethomeList(searchId).then(res => {
         if (res.code === ERR_OK) {
-          console.log(val)
-          console.log(res)
           this.loading = false
           this.bigweater = res.data.real.t
           this.windChinese = res.data.real.windChinese
           this.u = res.data.real.u
           this.aqi = res.data.real.aqi
           this.pha = res.data.real.p
+          for (var i = 0; i < res.data.nHours.length;i++) {
+            var tempstr = `${imgweather}${res.data.nHours[i].w}.png`
+            res.data.nHours[i].w = tempstr
+          }
           this.weatherArray = res.data.nHours
           var titlename = `${val.result[0].name} ${val.result[1].name} ${val.result[2].name}`
           this.titlecontent = titlename
@@ -257,12 +265,13 @@ export default {
       line-height: 5rem;
       > .title-left {
         width: 3rem;
-        height: 3rem;
-        font-size: 3.5em;
+        height: 2.5rem;
+        font-size: 3em;
         text-align: center;
       }
       > .title-content {
-        font-size: 1.5em;
+        font-size: 1.6em;
+        padding-top: 5px;
       }
       > .title-right {
 
@@ -290,7 +299,6 @@ export default {
     }
     > .temperature-content {
       width: 100%;
-      padding-top: 3rem;
       > .left-weatear {
         width: 60%;
         display: inline-block;
@@ -351,12 +359,13 @@ export default {
       display: flex;
       // margin-top: 40%;
       position: relative;
-      bottom: -213px;
+      bottom: -18.4rem;
       color: #fff;
       > div {
         width: 25%;
-        height: 3rem;
-        line-height: 1.5rem;
+        height: 5rem;
+        font-size: 1.2em;
+        line-height: 2.2rem;
         text-align: center;
         color: #fff;
         background-color: #000;
@@ -426,7 +435,7 @@ export default {
   background-color: #fff;
   width: 100%;
   text-align: center;
-  padding: 10px 0;
+  padding: 2px 0;
   display: inline-block;
   > .staticChart {
     width: 100%;

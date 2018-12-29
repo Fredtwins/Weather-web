@@ -1,9 +1,9 @@
 import axios from 'axios'
 
 // let httpUrl = 'http://192.168.1.174:8080/'
-// let httpUrl = 'http://10.0.1.184:8080/'
+let httpUrl = 'http://10.0.1.184:8080/'
 
-let httpUrl = 'http://192.168.43.128:8080/'
+// let httpUrl = 'http://192.168.43.128:8080/'
 
 // 页面接口通用
 export function ajaxGet (url = '', data = {}) {

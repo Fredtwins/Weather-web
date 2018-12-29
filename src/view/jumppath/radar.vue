@@ -53,7 +53,7 @@ export default {
   data () {
     return {
       active: 0,
-      titlecontet: 'S波段雷达图',
+      titlecontet: '雷达图',
       imgArray: [],
       imgArrayz: [],
       imgArrayq: [],
@@ -142,7 +142,8 @@ export default {
 
 <style lang="less" scoped>
 .radar {
-
+  height: 100%;
+  margin-bottom: 5rem;
 }
 .swiper-container {
   width: 100%;

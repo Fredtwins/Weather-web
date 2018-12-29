@@ -19,10 +19,10 @@
             <!-- 分成一个个的小盒子装着 -->
             <div class="first" v-for="(item, index) in onearr" :key="item.index">
               <div class="tom-day">{{item.week}}</div>
+              <div class="tom-do"><img :src="item.wbi" alt=""></div>
               <div class="tom-date">{{item.date}}</div>
               <div class="tom-img">{{item.wd}}</div>
               <div class="tom-tmax">{{item.wf}}</div>
-              <div class="tom-do">{{item.wbi}}</div>
               <div class="tom-level">{{item.wb}}</div>
             </div>
           </div>
@@ -35,10 +35,10 @@
             <!-- 分成一个个的小盒子装着 -->
             <div class="first" v-for="(item, index) in tooarr" :key="item.index">
               <div class="tom-day">{{item.week}}</div>
+              <div class="tom-do"><img :src="item.wbi" alt=""></div>
               <div class="tom-date">{{item.date}}</div>
               <div class="tom-img">{{item.wd}}</div>
               <div class="tom-tmax">{{item.wf}}</div>
-              <div class="tom-do">{{item.wbi}}</div>
               <div class="tom-level">{{item.wb}}</div>
             </div>
           </div>
@@ -51,9 +51,9 @@
             <div class="first" v-for="(item, index) in treearr" :key="item.index">
               <div class="tom-day">{{item.week}}</div>
               <div class="tom-date">{{item.date}}</div>
+              <div class="tom-do"><img :src="item.wbi" alt=""></div>
               <div class="tom-img">{{item.wd}}</div>
               <div class="tom-tmax">{{item.wf}}</div>
-              <div class="tom-do">{{item.wbi}}</div>
               <div class="tom-level">{{item.wb}}</div>
             </div>
           </div>
@@ -69,7 +69,7 @@ import Vue from 'vue'
 import $ from "jquery";
 import { NoticeBar  } from 'vant'
 import { weatherList } from '../../api/indexweather.js'
-import { ERR_OK } from '../../api/config'
+import { ERR_OK, imgweather } from '../../api/config'
 Vue.use(NoticeBar)
 
 export default {
@@ -425,6 +425,11 @@ export default {
     _weatherList () {
       weatherList().then(res => {
         if (res.code === ERR_OK) {
+          console.log(res.data.nDay)
+          for (var i = 0; i < res.data.nDay.length; i++) {
+            var temp = `${imgweather}${res.data.nDay[i].wbi}.png`
+            res.data.nDay[i].wbi = temp
+          }
           let arrNday = res.data.nDay
           this.onearr = arrNday.slice(0, 5)
           this.tooarr = arrNday.slice(5, 10)
@@ -438,7 +443,7 @@ export default {
       this._weatherList()
       setTimeout(() => {
         this._getcanvasList()
-      }, 20)
+      }, 100)
     })
   }
 };

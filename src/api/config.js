@@ -8,5 +8,8 @@ export const Static = 'static/'
 export const ERR_CUSTOM = '2000'
 
 // 轮播图云图ip地址
-// export const httpUrlimg = 'http://10.0.1.184'
-export const httpUrlimg = 'http://192.168.43.128'
+export const httpUrlimg = 'http://10.0.1.184'
+// export const httpUrlimg = 'http://192.168.43.128'
+
+// 图标ip地址
+export const imgweather = 'http://10.0.1.184/images/weather/folo_10d/'

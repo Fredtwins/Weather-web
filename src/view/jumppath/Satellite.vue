@@ -1,24 +1,35 @@
 <template>
   <div class="Satellite">
     <!-- 头部 -->
-    <div class="hearder-title clear">
+    <!-- <div class="hearder-title clear">
       <van-icon 
         class="pull-left" 
         name="arrow-left"
         @click="jumppath"/>
       卫星云图
-    </div>
+    </div> -->
+    <state-header :titlecontet="titlecontet" />
     <!-- 大的背景图 模糊 -->
     <div class="bg-blur">
       <div class="content-front">
         <!-- 头部轮播图 -->
         <div class="header-slider">
-          <button class="swiperbtn" @click='stop'>{{titleend}}</button>
-          <button class="swiperbtn" @click='start'>开始</button>
+          <Form ref="formInline" :model="formInline" inline :label-width="80">
+            <Form-item>
+              <Select v-model="formInline.datetime" clearable style="width:200px" @on-change="selectIndex">
+                <Option v-for="item in stationList" :value="item.datetime">{{item.datetime}}</Option>
+              </Select>
+            </Form-item>
+            <button class="swiperbtn" @click='stop'>{{titleend}}</button> 
+            <button class="swiperbtn" @click='start'>开始</button>
+          </Form>
+          
+          <div class="imgdatetime" v-model="value">{{imgdatetime}}</div>
+
           <div class="container" ref='mypp'>
             <div class="swiper-container" >
               <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="(item, index) in imgArray" :key="item.index">
+                <div class="swiper-slide" v-for="(item, index) in imgArray" :key="item.index" v-model="value2">
                   <img :src="item" alt="">
                 </div>
               </div>
@@ -49,10 +60,10 @@
 <script>
 import Vue from "vue";
 import Swiper from 'swiper';
+import stateHeader from './stateheader'
 import { Icon, Swipe, SwipeItem } from "vant";
 import { GetCloudList } from '../../api/rabar.js';
 import { ERR_OK, httpUrlimg } from '../../api/config.js';
-// import { httpUrl1 } from '../../api/axios';
 
 Vue.use(Icon).use(Swipe).use(SwipeItem);
 
@@ -60,16 +71,30 @@ export default {
   components: {
     Icon,
     Swipe,
-    SwipeItem
+    SwipeItem,
+    stateHeader
   },
   data() {
     return {
       mySwiper:'',
       titleend: '暂停',
-      imgArray: []
+      imgArray: [],
+      titlecontet: '卫星云图',
+      formInline: {
+        datetime: ''
+      },
+      stationList: [],
+      value2: 0,
+      value: '',
+      imgdatetime: ''
     };
   },
   methods: {
+    selectIndex (value) {
+      const index = this.stationList.findIndex(item => item.datetime === value)
+      this.value2 = index + 1
+      this.mySwiper.slideTo(this.value2, 1000, false)
+    },
     // 点击按钮跳转到首页
     jumppath() {
       this.$router.push("/navpath/radar");
@@ -99,19 +124,10 @@ export default {
         scrollbar: {
           el: ".swiper-scrollbar"
         }
-      });
-
-      // 鼠标移入移出暂停，播放
-      // this.$refs.mypp.addEventListener('mouseover',()=>{
-      //   this.stop();
-      // })
-      // this.$refs.mypp.addEventListener('mouseout',()=>{
-      //   this.start();
-      // })
+      })
     },
     stop(){
       this.mySwiper.autoplay.stop();
-      // this.$refs.vanswpiers.autoplay.stop()
       this.titleend = '已暂停'
     },
     start(){
@@ -121,8 +137,9 @@ export default {
     _GetCloudList() {
       GetCloudList ().then(res => {
         if (res.code === ERR_OK) {
+          console.log(res)
           var imgArrays = res.data.earth
-          // let httpUrl1 = 'http://10.0.1.184'
+          this.stationList = res.data.earth
           for (var i = 0; i < imgArrays.length; i++) {
             var imgUrlarray = `${httpUrlimg}:80${imgArrays[i].path}`
             this.imgArray.push(imgUrlarray)
@@ -164,6 +181,7 @@ export default {
   }
 }
 
+
 .bg-blur {
   background: url("./img/bgib.png");
   background-size: 100% 100%;
@@ -179,14 +197,7 @@ export default {
   border: 0.1px solid #ccc;
   color: #ffffff;
   > .header-slider {
-    > .swiperbtn {
-      background-color: #244bb2;
-      width: 5rem;
-      height: 3rem;
-      border-radius: 5px;
-      border: 1px solid #244bb2;
-      margin: 5px;
-    }
+    
   }
   > .footer-font {
     > .footer-title {
@@ -202,6 +213,16 @@ export default {
       }
     }
   }
+}
+
+.swiperbtn {
+  background-color: #244bb2;
+  width: 5rem;
+  height: 3rem;
+  border-radius: 5px;
+  border: 1px solid #244bb2;
+  margin: 5px;
+  color: #fff;
 }
 
 .van-swipe__track {

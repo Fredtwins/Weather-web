@@ -56,13 +56,11 @@ export default {
 <style lang="less" scoped>
 .home {
   width: 100%;
-  height: 100%;
+  height: 105%;
   background-image: url("./img/bgib.png");
   background-size: 100% 100%;
-  // background-color: red;
   > .home-porject {
     width: 100%;
-    // height: calc(100% - 3rem);
     background-color: #306ec7;
   }
 }

@@ -1,11 +1,18 @@
 <template>
   <div class="jumpmore">
-    <!-- 头部 -->
-    <div class="hearder-title clear">实景天气
-      <van-icon 
-        class="classiconsize pull-right" 
-        name="arrow" 
-        @click="jumppathlast"/>
+      <!-- 头部 -->
+    <div class="title-contentweather">
+        <!-- <van-icon 
+          class="classsizeleft pull-left" 
+          name="arrow-left" 
+          @click="jumpleft"/>
+      <div class="hearder-title clear">实景天气
+        <van-icon 
+          class="classiconsize pull-right" 
+          name="arrow"
+          @click="jumppathlast"/> -->
+      <!-- </div> -->
+      <jump-header :titlecontet="titlecontet"/>
     </div>
     <!-- 大的背景图 模糊 -->
     <div class="bg-blur">
@@ -38,6 +45,7 @@
 
 <script>
 import Vue from 'vue'
+import JumpHeader from './jumpheader'
 import { Icon } from 'vant'
 import { Getjumpmore } from '../../api/jumpmore.js'
 import { ERR_OK, httpUrlimg } from '../../api/config.js'
@@ -46,11 +54,13 @@ Vue.use(Icon)
 
 export default {
   components: {
-    Icon
+    Icon,
+    JumpHeader
   },
   data () {
     return {
-      rainArray: []
+      rainArray: [],
+      titlecontet: '景区预报'
     }
   },
   methods: {
@@ -72,6 +82,9 @@ export default {
           console.log(this.rainArray)
         }
       })
+    },
+    jumpleft () {
+      this.$router.push('/navpath/Satellite')
     }
   },
   mounted () {
@@ -84,19 +97,22 @@ export default {
 .jumpmore {
   width: 100%;
   height: 100%;
-  > .hearder-title {
-    color: #fff;
-    font-size: 2em;
-    text-align: center;
-    line-height: 1rem;
-    padding-top: 18px;
-    background-color: #193ba8;
-    padding-bottom: 4px;
-    > .classiconsize {
-      padding-right: 5px;
-    }
-    > span {
-      margin-left: 5px;
+  .title-contentweather {
+    
+    > .hearder-title {
+      color: #fff;
+      font-size: 2em;
+      text-align: center;
+      line-height: 1rem;
+      padding-top: 18px;
+      background-color: #193ba8;
+      padding-bottom: 4px;
+      > .classiconsize {
+        padding-right: 5px;
+      }
+      > span {
+        margin-left: 5px;
+      }
     }
   }
 }
@@ -118,10 +134,10 @@ export default {
     border-bottom: 1px solid #ccc;
     > .heardertitle {
       display: inline-block;
-      font-size: 1rem;
+      font-size: 1.6em;
     }
     > .hearder-time {
-      font-size: 1.1rem;
+      font-size: 1.6em;
       color:rgba(255,255,255,1);
       opacity:0.6;
       display: inline-block;
@@ -129,22 +145,34 @@ export default {
   }
   > .content-rain {
     width: 100%;
+    font-size: 1em;
+    font-weight: 700;
     > img {
-      width: 11rem;
+      width: 40%;
       height: 11rem;
       margin-left: 10px;
       margin-top: 10px;
     }
     > .right-rain {
       display: inline-block;
-      width: 44%;
+      width: 160px;
       text-align: center;
-      padding: 8px 10px 10px 3rem;
+      padding: 8px 0 10px 3.6rem;
       > span {
         font-size: 1.2em;
         padding: 7px 0;
       }
     }
+  }
+}
+
+.classsizeleft {
+  width: 3rem;
+  height: 2rem;
+  color: #fff;
+  > .classsizelefyt::before {
+    width: 100%;
+    height: 100%;
   }
 }
 </style>
