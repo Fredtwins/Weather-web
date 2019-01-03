@@ -5,7 +5,31 @@
     <div class="radar-tab">
       <van-tabs v-model="active" animated>
         <van-tab title="佛山镇街雷达图">
-          <foradar :imgArray="imgArrayf" v-if="active===0"/>
+          <!-- <foradar :imgArray="imgArrayf" v-if="active===0"/> -->
+          <div class="radar-swiper">
+            <div class="header-slider">
+              <button class="swiperbtn" @click='stop'>{{titleend}}</button>
+              <button class="swiperbtn" @click='start'>{{titlestart}}</button>
+              <div class="container" ref='mypp'>
+                <div class="swiper-container" >
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="(item, index) in imgArrayf" :key="item.index">
+                      <img :src="item" alt="">
+                    </div>
+                  </div>
+                  <!-- 如果需要分页器 -->
+                  <div class="swiper-pagination"></div>
+                  <!-- 如果需要滚动条 -->
+                  <!-- <div class="swiper-scrollbar"></div> -->
+                  <!-- 如果需要导航按钮 -->
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+                <!-- 如果需要分页器  也可以放外面-->
+                <!-- <div class="swiper-pagination"></div> -->
+              </div>
+            </div>
+          </div>
         </van-tab>
         <van-tab title="广州雷达图">
           <gzswiper :imgArray="imgArray" v-if="active===1"/>
@@ -83,7 +107,6 @@ export default {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev"
         },
-
         // 如果需要滚动条
         scrollbar: {
           el: ".swiper-scrollbar"

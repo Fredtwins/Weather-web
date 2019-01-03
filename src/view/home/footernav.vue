@@ -57,7 +57,7 @@ export default {
       active: 0,
       imgTabUrl: [
         {
-          icon: require('./img/shouye.png'),
+          icon: require('./img/weibiaoti--.png'),
           name: '首页',
           urlpath: '/home/homeporject'
         }, {
@@ -121,6 +121,7 @@ export default {
   height: 4rem;
   background-color: #000;
   color: #fff;
+  z-index: 999;
   > ul {
     width: 100%;
     height: 100%;

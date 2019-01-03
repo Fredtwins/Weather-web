@@ -484,6 +484,7 @@ export default {
   }
   > .big-weather {
     border-bottom: 2px solid #ccc;
+    padding-bottom: 3rem;
     > .content-weather {
       width: 100%;
       display: flex;

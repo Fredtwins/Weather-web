@@ -30,7 +30,9 @@ export default {
         return {
             areaList: {},
             currentValue: false,
-            vessel: {}
+            vessel: {},
+            latsel: {},
+            lngsel: {}
         }
     },
     watch: {
@@ -81,7 +83,9 @@ export default {
                 tempCountylistArr.push({
                     parentName: element.town,
                     nodeName: element.sn,
-                    id: element.id
+                    id: element.id,
+                    latitude: element.latitude,
+                    longitude: element.longitude
                 })
             });
             tempProvincelistArr = Array.from(new Set(tempProvincelistArr))
@@ -106,6 +110,8 @@ export default {
                 }
             })
             this.vessel = {}
+            this.latsel = {}
+            this.lngsel = {}
             tempCountylistArr.forEach(element => {
                 if(element.parentName != tempName3) {
                     countylistNum = 10;
@@ -116,6 +122,8 @@ export default {
                         if(city_list[key] == element.parentName) {
                             countylistNum += 1
                             this.vessel[key + countylistNum] = element.id
+                            this.latsel[key + countylistNum] = element.latitude
+                            this.lngsel[key + countylistNum] = element.longitude
                             county_list[key + countylistNum] = element.nodeName
                         }
                     }
@@ -128,9 +136,11 @@ export default {
             }
         },
         confirm(val) {
-            let id = this.vessel[val[val.length - 1].code] || '';
-            this.currentValue = false;
-            this.$emit('confirm', {result: val, id})
+          let id = this.vessel[val[val.length - 1].code] || '';
+          let latitude = this.latsel[val[val.length - 1].code] || '';
+          let longitude = this.lngsel[val[val.length - 1].code] || '';
+          this.currentValue = false;
+          this.$emit('confirm', {result: val, id, latitude, longitude})
         },
         cancel() {
             this.currentValue = false;

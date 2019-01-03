@@ -192,7 +192,7 @@ export default {
 }
 .content-front {
   // text-align: center;
-  margin-bottom: 8px;
+  margin-bottom: 5.4rem;
   margin-top: 10px;
   border: 0.1px solid #ccc;
   color: #ffffff;
@@ -200,6 +200,7 @@ export default {
     
   }
   > .footer-font {
+    margin-bottom: 3rem;
     > .footer-title {
       font-size: 1.4em;
       padding: 1rem;
@@ -217,7 +218,7 @@ export default {
 
 .swiperbtn {
   background-color: #244bb2;
-  width: 5rem;
+  width: 3.5rem;
   height: 3rem;
   border-radius: 5px;
   border: 1px solid #244bb2;
@@ -238,7 +239,7 @@ export default {
 
 .swiper-container {
   width: 100%;
-  height: 15rem;
+  height: 22rem;
 }
 .swiper-container .swiper-wrapper {
   width: 100%;
@@ -252,7 +253,7 @@ export default {
 }
 .swiper-container .swiper-wrapper .swiper-slide >img{
   width: 100%;
-  height: 15rem;
+  height: 100%;
   /* overflow: hidden; */
 }
 </style>

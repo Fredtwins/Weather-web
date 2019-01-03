@@ -94,7 +94,20 @@
     <div class="weatherfooter">
       <filter-aear v-model="showAear" :filterAearData="filterAearData" @confirm="msgconfirm"></filter-aear>
       <!-- 头部标题 -->
-      <!-- <div class="weather-title">地图</div> -->
+      <div class="weather-title">地图</div>
+      <div class="amap-page-container">
+        <div :style="{width:'100%',height:'300px'}">
+          <el-amap vid="amap" :plugin="plugin" class="amap-demo" :center="center">
+            <el-amap-marker v-for="(marker, index) in markers"
+              :position="marker.position"
+              :title="marker.title"
+              :vid="index"
+              :key="index"
+              >
+            </el-amap-marker>
+          </el-amap>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -104,10 +117,13 @@ import Vue from 'vue';
 import echarts from 'echarts'
 import filterAear from './indexfilter'
 import linkage from './linkage.json'
+import vueAMap from 'vue-amap'
 import { Tab, Tabs, Loading } from 'vant';
 import { GethomeList, Getlinkage } from '../../api/home.js'
 import { ERR_OK, imgweather } from '../../api/config.js'
 Vue.use(Tab).use(Tabs).use(Loading);
+
+let amapManager = new vueAMap.AMapManager()
 
 export default {
   components: {
@@ -129,7 +145,30 @@ export default {
       pha: '',
       u: '',
       windChinese: '',
-      weatherArray: []
+      weatherArray: [],
+      formItem: {
+        lat: 0,
+        lng: 0
+      },
+      amapManager,
+      zoom: 12,
+      center: [0, 0],
+      markers: [{
+        position: [0, 0],
+        events: {
+          'click': (e) => {
+            console.log(e)
+          } 
+        }  
+      }],
+      plugin: ['ToolBar', {
+        pName: 'MapType',
+        defaultType: 0,
+        events: {
+          init (o) {
+          }
+        }
+      }],
     }
   },
   methods: {
@@ -137,11 +176,16 @@ export default {
     _getlatlon() {
       var _this = this
       window.addEventListener('message', function(event) {
-        console.log(event)
+        // console.log(event)
         // 接收位置信息
         if (event.data.lat && event.data.lng) {
+
           _this.lat = event.data.lat
           _this.long = event.data.lng
+          _this.center = [_this.long, _this.lat]
+          _this.markers = []
+          _this.markers.push({position:[_this.long, _this.lat]})
+
           setTimeout(() => {
             var searchlatlng = {
               longitude: _this.long,
@@ -220,6 +264,11 @@ export default {
       let searchId = {
         id: val.id
       }
+      var latset = val.latitude
+      var lngset = val.longitude
+      this.markers = []
+      this.markers.push({position:[lngset, latset]})
+
       this.loading = true
       GethomeList(searchId).then(res => {
         if (res.code === ERR_OK) {
@@ -384,6 +433,7 @@ export default {
     }
     > .weather-tab {
       padding-bottom: 20px;
+      margin-bottom: 4rem;
     }
   }
   > .weatherfooter {
@@ -441,5 +491,13 @@ export default {
     width: 100%;
     height: 14rem;
   }
+}
+
+#myMap1 {
+  width: 100%;
+  height: 10rem;
+}
+.amap-demo {
+  height: 300px;
 }
 </style>
