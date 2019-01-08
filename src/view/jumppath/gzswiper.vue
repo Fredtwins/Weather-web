@@ -105,7 +105,7 @@ export default {
   mounted() {
     this.$nextTick(() => {
       this.init();
-    }, 1000);
+    });
   },
   created() {
     this._GetRaBar()

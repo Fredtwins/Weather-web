@@ -12,14 +12,10 @@
           </div>
           <!-- 如果需要分页器 -->
           <div class="swiper-pagination"></div>
-          <!-- 如果需要滚动条 -->
-          <!-- <div class="swiper-scrollbar"></div> -->
           <!-- 如果需要导航按钮 -->
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </div>
-        <!-- 如果需要分页器  也可以放外面-->
-        <!-- <div class="swiper-pagination"></div> -->
       </div>
     </div>
   </div>
@@ -65,20 +61,12 @@ export default {
         scrollbar: {
           el: ".swiper-scrollbar"
         }
-      });
-
-      // 鼠标移入移出暂停，播放
-      // this.$refs.mypp.addEventListener('mouseover',()=>{
-      //   this.stop();
-      // })
-      // this.$refs.mypp.addEventListener('mouseout',()=>{
-      //   this.start();
-      // })
+      })
     },
     stop() {
-      this.mySwiper.autoplay.stop();
       this.titleend = "已暂停";
       this.titlestart = '开始'
+      this.mySwiper.autoplay.stop();
     },
     start() {
       this.mySwiper.autoplay.start();
@@ -105,7 +93,7 @@ export default {
   mounted() {
     this.$nextTick(() => {
       this.init();
-    }, 1000);
+    });
   },
   created() {
     this._GetRaBar()

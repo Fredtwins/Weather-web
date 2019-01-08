@@ -169,15 +169,15 @@ export default {
             //写文字
             if (a == high_tep_arr) {
               context.beginPath();
-              context.font = "13px 微软雅黑";
-              context.fillStyle = "#333";
+              context.font = "12px 微软雅黑";
+              context.fillStyle = "#000";
               context.fillText(a[j] + "°", high_x - 10, -high_y - 10, 50);
               context.stroke();
               context.closePath();
             } else {
               context.beginPath();
               context.font = "12px 微软雅黑";
-              context.fillStyle = "#333";
+              context.fillStyle = "#000";
               context.fillText(a[j] + "°", high_x - 10, -high_y + 30, 50);
               context.stroke();
               context.closePath();
@@ -279,15 +279,15 @@ export default {
             //写文字
             if (a == high_tep_arr) {
               context.beginPath();
-              context.font = "13px 微软雅黑";
-              context.fillStyle = "#333";
+              context.font = "12px 微软雅黑";
+              context.fillStyle = "#000";
               context.fillText(a[j] + "°", high_x - 10, -high_y - 10, 50);
               context.stroke();
               context.closePath();
             } else {
               context.beginPath();
-              context.font = "13px 微软雅黑";
-              context.fillStyle = "#333";
+              context.font = "12px 微软雅黑";
+              context.fillStyle = "#000";
               context.fillText(a[j] + "°", high_x - 10, -high_y + 30, 50);
               context.stroke();
               context.closePath();
@@ -389,15 +389,15 @@ export default {
             //写文字
             if (a == high_tep_arr) {
               context.beginPath();
-              context.font = "13px 微软雅黑";
-              context.fillStyle = "#333";
+              context.font = "12px 微软雅黑";
+              context.fillStyle = "#000";
               context.fillText(a[j] + "°", high_x - 10, -high_y - 10, 50);
               context.stroke();
               context.closePath();
             } else {
               context.beginPath();
-              context.font = "13px 微软雅黑";
-              context.fillStyle = "#333";
+              context.font = "12px 微软雅黑";
+              context.fillStyle = "#000";
               context.fillText(a[j] + "°", high_x - 10, -high_y + 30, 50);
               context.stroke();
               context.closePath();

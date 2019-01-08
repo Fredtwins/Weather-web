@@ -28,6 +28,7 @@ export default {
 
 <style lang="less" scoped>
 .footer-content {
+  margin-bottom: 3rem;
   > .bg-blur {
     // background: url("./img/bgib.png");
     background-size: 100% 100%;
@@ -39,6 +40,7 @@ export default {
     }
     > .content {
       padding: 1.4rem;
+      margin-bottom: 3rem;
       > p {
         color: #fff;
       }

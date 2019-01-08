@@ -5,8 +5,8 @@
     <div class="radar-tab">
       <van-tabs v-model="active" animated>
         <van-tab title="佛山镇街雷达图">
-          <!-- <foradar :imgArray="imgArrayf" v-if="active===0"/> -->
-          <div class="radar-swiper">
+          <foradar ref="foradar" :imgArray="imgArrayf" v-if="active===0"/>
+          <!-- <div class="radar-swiper">
             <div class="header-slider">
               <button class="swiperbtn" @click='stop'>{{titleend}}</button>
               <button class="swiperbtn" @click='start'>{{titlestart}}</button>
@@ -17,19 +17,13 @@
                       <img :src="item" alt="">
                     </div>
                   </div>
-                  <!-- 如果需要分页器 -->
                   <div class="swiper-pagination"></div>
-                  <!-- 如果需要滚动条 -->
-                  <!-- <div class="swiper-scrollbar"></div> -->
-                  <!-- 如果需要导航按钮 -->
                   <div class="swiper-button-prev"></div>
                   <div class="swiper-button-next"></div>
                 </div>
-                <!-- 如果需要分页器  也可以放外面-->
-                <!-- <div class="swiper-pagination"></div> -->
               </div>
             </div>
-          </div>
+          </div> -->
         </van-tab>
         <van-tab title="广州雷达图">
           <gzswiper :imgArray="imgArray" v-if="active===1"/>
@@ -59,7 +53,6 @@ import foradar from './foradar'
 import { Tab, Tabs } from 'vant'
 import { ERR_OK, httpUrlimg } from '../../api/config.js'
 import { GetRaBar } from '../../api/rabar.js'
-// import { httpUrl1 } from '../../api/axios.js'
 Vue.use(Tab).use(Tabs)
 
 export default {
@@ -116,12 +109,12 @@ export default {
     stop() {
       this.mySwiper.autoplay.stop();
       this.titleend = "已暂停";
-      this.titlestart = '开始'
+      this.titlestart = '开始';
     },
     start() {
       this.mySwiper.autoplay.start();
       this.titleend = "暂停";
-      this.titlestart = '已开始'
+      this.titlestart = '已开始';
     },
      // 雷达图渲染
     _GetRaBar () {
@@ -149,7 +142,7 @@ export default {
             this.imgArrayf.push(imgUrlarrayf)
           }
           this.$nextTick(() => {
-            this.init();
+            this.$refs['foradar'].init();
           });
         }
         console.log(res)

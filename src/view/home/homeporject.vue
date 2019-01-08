@@ -432,8 +432,8 @@ export default {
       border-bottom: 0.1px solid #ccc;
     }
     > .weather-tab {
-      padding-bottom: 20px;
-      margin-bottom: 4rem;
+      // padding-bottom: 20px;
+      // margin-bottom: 4rem;
     }
   }
   > .weatherfooter {
