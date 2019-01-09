@@ -71,12 +71,11 @@ export default {
     _Getjumpmore() {
       Getjumpmore().then(res => {
         if (res.code === ERR_OK) {
-          // let httpUrl1 = 'http://10.0.1.184'
-          console.log(res.data)
+          console.log(res)
           let urlage = res.data
           var imgages = "images/Scenic/"
           for (var i = 0; i < urlage.length; i++) {
-            urlage[i].imageName = `${httpUrlimg}:80/${imgages}${urlage[i].imageName}`
+            urlage[i].imageName = `${httpUrlimg}/${imgages}${urlage[i].imageName}`
           }
           this.rainArray = urlage
           console.log(this.rainArray)

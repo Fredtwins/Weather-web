@@ -126,19 +126,19 @@ export default {
           var imgarrf = res.data.FoShan
           // let httpUrl1 = 'http://10.0.1.184'
           for (var i = 0; i < imgarr.length; i++) {
-            var imgUrlarray = `${httpUrlimg}:80${imgarr[i].path}`
+            var imgUrlarray = `${httpUrlimg}${imgarr[i].path}`
             this.imgArray.push(imgUrlarray)
           }
           for (var i = 0; i < imgarrz.length; i++) {
-            var imgUrlarrayz = `${httpUrlimg}:80${imgarrz[i].path}`
+            var imgUrlarrayz = `${httpUrlimg}${imgarrz[i].path}`
             this.imgArrayz.push(imgUrlarrayz)
           }
           for (var i = 0; i < imgarrq.length; i++) {
-            var imgUrlarrayq = `${httpUrlimg}:80${imgarrq[i].path}`
+            var imgUrlarrayq = `${httpUrlimg}${imgarrq[i].path}`
             this.imgArrayq.push(imgUrlarrayq)
           }
           for (var i = 0; i < imgarrf.length; i++) {
-            var imgUrlarrayf = `${httpUrlimg}:80${imgarrf[i].path}`
+            var imgUrlarrayf = `${httpUrlimg}${imgarrf[i].path}`
             this.imgArrayf.push(imgUrlarrayf)
           }
           this.$nextTick(() => {

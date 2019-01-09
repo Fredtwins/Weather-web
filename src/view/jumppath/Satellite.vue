@@ -141,7 +141,7 @@ export default {
           var imgArrays = res.data.earth
           this.stationList = res.data.earth
           for (var i = 0; i < imgArrays.length; i++) {
-            var imgUrlarray = `${httpUrlimg}:80${imgArrays[i].path}`
+            var imgUrlarray = `${httpUrlimg}${imgArrays[i].path}`
             this.imgArray.push(imgUrlarray)
           }
           this.$nextTick(()=>{

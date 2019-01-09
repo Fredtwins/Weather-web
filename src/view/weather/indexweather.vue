@@ -424,8 +424,8 @@ export default {
     // 数据渲染
     _weatherList () {
       weatherList().then(res => {
+      	console.log(res)
         if (res.code === ERR_OK) {
-          console.log(res.data.nDay)
           for (var i = 0; i < res.data.nDay.length; i++) {
             var temp = `${imgweather}${res.data.nDay[i].wbi}.png`
             res.data.nDay[i].wbi = temp

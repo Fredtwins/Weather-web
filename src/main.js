@@ -17,7 +17,6 @@ vueAMap.initAMapApiLoader({
   key: 'fb46b2ea96c5aaffaeb84a7b4361080c',
   plugin: ['Geocoder', 'MouseTool', 'MapType', 'DistrictSearch']
 });
-console.log(vueAMap)
 
 Vue.prototype.$http=axios
 

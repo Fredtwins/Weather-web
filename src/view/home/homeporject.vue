@@ -157,7 +157,7 @@ export default {
         position: [0, 0],
         events: {
           'click': (e) => {
-            console.log(e)
+            
           } 
         }  
       }],
@@ -193,6 +193,7 @@ export default {
             }
             _this.loading = true
             GethomeList(searchlatlng).then(res => {
+            	console.log(res)
               if (res.code === ERR_OK) {
                 _this.titlecontent = event.data.city
                 _this.bigweater = res.data.real.t
