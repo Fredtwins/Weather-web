@@ -85,7 +85,7 @@ export default {
     };
   },
   created() {
-    
+    this._weatherList()
   },
   methods: {
     // 显示canvas图
@@ -439,13 +439,13 @@ export default {
     }
   },
   mounted () {
-    this.$nextTick(() => {
-      this._weatherList()
-      setTimeout(() => {
-        this._getcanvasList()
-      }, 100)
-    })
-  }
+//  this.$nextTick(() => {
+//    this._weatherList()
+	  setTimeout(() => {
+	    this._getcanvasList()
+	  }, 200)
+//  })
+	}
 };
 </script>
 

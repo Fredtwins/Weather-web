@@ -9,9 +9,9 @@
         <!-- <div class="lat">{{lat}}</div>
         <div class="long">{{long}}</div> -->
         
-        <iframe id="geoPage" width=0 height=0 frameborder=0  style="display:none;" scrolling="no"
+        <!-- <iframe id="geoPage" width=0 height=0 frameborder=0  style="display:none;" scrolling="no"
             src="https://apis.map.qq.com/tools/geolocation?key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp">
-        </iframe>
+        </iframe> -->
         <div class="title-right pull-right"></div>
       </div>
       <!-- 头部提示 -->
@@ -116,14 +116,24 @@
 import Vue from 'vue';
 import echarts from 'echarts'
 import filterAear from './indexfilter'
-import linkage from './linkage.json'
+// import linkage from './linkage.json'
 import vueAMap from 'vue-amap'
 import { Tab, Tabs, Loading } from 'vant';
 import { GethomeList, Getlinkage } from '../../api/home.js'
 import { ERR_OK, imgweather } from '../../api/config.js'
-Vue.use(Tab).use(Tabs).use(Loading);
+
+Vue.use(Tab).use(Tabs).use(Loading)
+Vue.use(vueAMap)
+
+// 初始化vue-amap
+vueAMap.initAMapApiLoader({
+  key: 'fb46b2ea96c5aaffaeb84a7b4361080c',
+  plugin: ['Geocoder', 'MouseTool', 'MapType', 'DistrictSearch']
+});
 
 let amapManager = new vueAMap.AMapManager()
+
+var map
 
 export default {
   components: {
@@ -157,7 +167,7 @@ export default {
         position: [0, 0],
         events: {
           'click': (e) => {
-            
+            console.log(e)
           } 
         }  
       }],
@@ -172,11 +182,74 @@ export default {
     }
   },
   methods: {
+    _getmap () {
+      map = new AMap.Map('main', {
+        resizeEnable: true,
+        zoom: 14
+      })
+      var _this = this
+      // 浏览器定位
+      map.plugin('AMap.Geolocation', function () { // 异步加载插件
+        // var icon = new AMap.Icon({
+        //   size: new AMap.Size(40, 50), // 图标尺寸
+        //   image: '//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png', // Icon的图像
+        //   imageSize: new AMap.Size(40, 50)// 根据所设置的大小拉伸或压缩图片
+        // })
+        var geolocation = new AMap.Geolocation({
+          // 是否使用高精度定位，默认：true
+          enableHighAccuracy: true,
+          // 定位按钮的停靠位置的偏移量，默认：Pixel(10, 20)
+          buttonOffset: new AMap.Pixel(10, 20),
+          //  定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+          zoomToAccuracy: true,
+          GeoLocationFirst: true,
+          // 点标记隐藏
+          showMarker: false,
+          // markerOptions: {
+          //   icon: icon
+          // },
+          //  定位按钮的排放位置,  RB表示右下
+          buttonPosition: 'RB'
+        })
+        map.addControl(geolocation)
+        geolocation.getCurrentPosition()
+        // 定位成功返回信息
+        AMap.event.addListener(geolocation, 'complete', function (data) {
+          console.log('定位成功', data.position.lng, data.position.lat)
+          _this.center = [data.position.lng, data.position.lat]
+          _this.markers = []
+          _this.markers.push({position:[data.position.lng, data.position.lat]})
+          var searchlatlng = {
+            longitude: data.position.lng,
+            latitude: data.position.lat
+          }
+          GethomeList(searchlatlng).then(res => {
+            if (res.code === ERR_OK) {
+              _this.titlecontent = '佛山市'
+              _this.bigweater = res.data.real.t
+              _this.windChinese = res.data.real.windChinese
+              _this.u = res.data.real.u
+              _this.aqi = res.data.real.aqi
+              _this.pha = res.data.real.p
+              _this._Getrainecharts(res.data)
+              for (var i = 0; i < res.data.nHours.length;i++) {
+                var temp = `${imgweather}${res.data.nHours[i].w}.png`
+                res.data.nHours[i].w = temp
+              }
+              _this.weatherArray = res.data.nHours
+            }
+          })
+        })
+        // 定位失败返回信息
+        AMap.event.addListener(geolocation, 'error', function (data) {
+          console.log(data)
+        })
+      })
+    },
     // 获取经纬度
     _getlatlon() {
       var _this = this
       window.addEventListener('message', function(event) {
-        // console.log(event)
         // 接收位置信息
         if (event.data.lat && event.data.lng) {
 
@@ -193,7 +266,6 @@ export default {
             }
             _this.loading = true
             GethomeList(searchlatlng).then(res => {
-            	console.log(res)
               if (res.code === ERR_OK) {
                 _this.titlecontent = event.data.city
                 _this.bigweater = res.data.real.t
@@ -291,8 +363,11 @@ export default {
       })
     }
   },
+  created () {
+    },
   mounted () {
-    this._getlatlon()
+    // this._getlatlon()
+    this._getmap()
     this._Getlinkage()
   }
 }

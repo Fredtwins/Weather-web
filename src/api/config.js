@@ -16,3 +16,7 @@ export const httpUrlimg = 'http://219.132.198.90:8081'
 // export const imgweather = 'http://192.168.121.175/images/weather/folo_10d/'
 // export const imgweather = 'http://10.0.1.184/images/weather/folo_10d/'
 export const imgweather = 'http://219.132.198.90:8081/images/weather/folo_10d/'
+
+// export function Getamap () {
+
+// }
