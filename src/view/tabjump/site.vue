@@ -240,7 +240,7 @@ export default {
     }
   }
   > .site-content {
-
+    margin-bottom: 4.5rem;
   }
 }
 .van-tabs__line {

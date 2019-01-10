@@ -22,8 +22,14 @@
 import { cityThead, showtowthead, HourThead, SfiveTime } from '../../common/js/table.js'
 import { siteTime, TimeList, shareTime, DayTime, HourTime, Stime } from '../../api/sitetab.js'
 import { ERR_OK } from '../../api/config.js'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
+  computed: {
+    ...mapGetters([
+      'SiteTab', 'DateTimeVal'
+    ])
+  },
   data () {
     return {
       showtable: true,
@@ -70,11 +76,11 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['SET_SITETAB', 'SET_DATETIMEVAL']),
     // 首次进来下来时间
     _siteTime () {
       siteTime().then(res => {
         if (res.code === ERR_OK) {
-          console.log(res)
           this.timeList = res.data.awsTimesTimeList
           this.model = this.cityList[0].value
           this.model2 = res.data.awsTimesTimeList[0].value     
@@ -84,7 +90,6 @@ export default {
     // 选择左边的触发事件改变右边的值
     stieTimechange (value) {
       siteTime().then(res => {
-        console.log(res)
         if (res.code === ERR_OK) {
           if (value === '自动站时次记录') {
             this.timeList = res.data.awsTimesTimeList
@@ -109,6 +114,7 @@ export default {
     },
     // 选择右边的，判断用哪个接口
     settimechange (val) {
+      console.log(val)
       // console.log(this.model)
       if (this.model === '自动站时次记录') {
         let search = {
@@ -163,7 +169,6 @@ export default {
         this.loading3 = true
         HourTime(searchHourtime).then(res => {
           if (res.code === ERR_OK) {
-            console.log(res)
             this.loading3 = false
             this.showtable = false
             this.showtable2 = false
@@ -195,6 +200,13 @@ export default {
           }
         })
       }
+      let typedateval = {
+        model: this.model,
+        val: val
+      }
+      this.SET_SITETAB(typedateval)
+      console.log('---------')
+      console.log(this.SiteTab)
     },
     // 一开始进来默认显示
     _GettablList () {
@@ -211,10 +223,8 @@ export default {
   },
   mounted () {
     this._siteTime()
-    console.log(1)
     setTimeout(() => {
       this._GettablList()
-      console.log(2)
     }, 200)
   }
 }

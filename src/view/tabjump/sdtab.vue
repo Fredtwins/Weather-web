@@ -18,8 +18,14 @@
 import { cityThead, showtowthead, HourThead, SfiveTime } from '../../common/js/table.js'
 import { siteTime, TimeList, shareTime, DayTime, HourTime, Stime } from '../../api/sitetab.js'
 import { ERR_OK } from '../../api/config.js'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
+  computed: {
+    ...mapGetters([
+      'SiteTab'
+    ])
+  },
   data () {
     return {
       showtable: true,
@@ -66,11 +72,11 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['SET_SITETAB']),
     // 首次进来下来时间
     _siteTime () {
       siteTime().then(res => {
         if (res.code === ERR_OK) {
-          console.log(res)
           this.timeList = res.data.awsTimesTimeList
           this.model = this.cityList[0].value
           this.model2 = res.data.awsTimesTimeList[0].value     
@@ -195,6 +201,8 @@ export default {
           }
         })
       }
+      this.SET_SITETAB(val)
+      console.log(this.SET_SITETAB)
     },
     // 一开始进来默认显示
     _GettablList () {
@@ -215,6 +223,7 @@ export default {
     setTimeout(() => {
       this._GettablList()
     }, 200)
+    console.log(this.SiteTab)
   }
 }
 </script>

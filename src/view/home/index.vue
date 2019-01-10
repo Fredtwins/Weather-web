@@ -1,7 +1,9 @@
 <template>
   <div class="home">
     <div class="home-porject">
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </div>
     <footernav/>
   </div>

@@ -1,4 +1,5 @@
 <template>
+  <keep-alive>
   <div class="homeporject">
     <!-- 背景图 -->
     <div class="weathertop">
@@ -93,7 +94,6 @@
     <!-- 底部地图 -->
     <div class="weatherfooter">
       <filter-aear v-model="showAear" :filterAearData="filterAearData" @confirm="msgconfirm"></filter-aear>
-      <!-- 头部标题 -->
       <div class="weather-title">地图</div>
       <div class="amap-page-container">
         <div :style="{width:'100%',height:'300px'}">
@@ -110,6 +110,7 @@
       </div>
     </div>
   </div>
+  </keep-alive>
 </template>
 
 <script>
@@ -182,6 +183,7 @@ export default {
     }
   },
   methods: {
+    // 获取经纬度请求接口
     _getmap () {
       map = new AMap.Map('main', {
         resizeEnable: true,
@@ -242,11 +244,10 @@ export default {
         })
         // 定位失败返回信息
         AMap.event.addListener(geolocation, 'error', function (data) {
-          console.log(data)
+          // console.log(data)
         })
       })
     },
-    // 获取经纬度
     _getlatlon() {
       var _this = this
       window.addEventListener('message', function(event) {

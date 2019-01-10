@@ -1,0 +1,3 @@
+export const SET_SITETAB = 'SET_SITETAB'
+
+export const SET_DATETIMEVAL = 'SET_DATETIMEVAL'
