@@ -114,7 +114,6 @@ export default {
     },
     // 选择右边的，判断用哪个接口
     settimechange (val) {
-      console.log(val)
       // console.log(this.model)
       if (this.model === '自动站时次记录') {
         let search = {
@@ -184,7 +183,6 @@ export default {
         this.loading4 = true
         Stime(searchfivetime).then(res => {
           if (res.code === ERR_OK) {
-            // console.log(res)
             this.loading4 = false
             this.showtable = false
             this.showtable2 = false
@@ -205,8 +203,6 @@ export default {
         val: val
       }
       this.SET_SITETAB(typedateval)
-      console.log('---------')
-      console.log(this.SiteTab)
     },
     // 一开始进来默认显示
     _GettablList () {
@@ -225,7 +221,8 @@ export default {
     this._siteTime()
     setTimeout(() => {
       this._GettablList()
-    }, 200)
+    }, 500)
+    this.settimechange()
   }
 }
 </script>

@@ -215,6 +215,7 @@ export default {
     setTimeout(() => {
       this._GettablList()
     }, 200)
+    this.settimechange()
   }
 }
 </script>

@@ -137,13 +137,12 @@ export default {
     _GetCloudList() {
       GetCloudList ().then(res => {
         if (res.code === ERR_OK) {
-          console.log(res)
           var imgArrays = res.data.earth
           this.stationList = res.data.earth
           for (var i = 0; i < imgArrays.length; i++) {
             var imgUrlarray = `${httpUrlimg}${imgArrays[i].path}`
             this.imgArray.push(imgUrlarray)
-          }
+          } 
           this.$nextTick(()=>{
             this.init()
           })

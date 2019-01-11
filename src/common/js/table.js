@@ -6,7 +6,7 @@ export function cityThead (that) {
       align: 'center',
       key: 'stationname'
     }, {
-      title: '温度',
+      title: '温度(℃)',
       align: 'center',
       sortable: true,
       key: 't'
@@ -36,12 +36,12 @@ export function showtowthead(that) {
       align: 'center',
       key: 'stationname'
     }, {
-      title: '最低温度',
+      title: '最低温度(℃)',
       align: 'center',
       sortable: true,
       key: 'tmin'
     }, {
-      title: '最高温度',
+      title: '最高温度(℃)',
       align: 'center',
       sortable: true,
       key: 'tmax'
@@ -69,7 +69,7 @@ export function HourThead (that) {
       width: 100,
       fixed: 'left'
     }, {
-      title: '最高气温',
+      title: '最高气温(℃)',
       align: 'center',
       key: 'tmax',
       sortable: true,
@@ -88,7 +88,7 @@ export function HourThead (that) {
         })
       }
     }, {
-      title: '最低气温',
+      title: '最低气温(℃)',
       align: 'center',
       key: 'tmin',
       sortable: true,
@@ -113,7 +113,7 @@ export function HourThead (that) {
       key: 'windChinese',
       width: 80
     }, {
-      title: '最大阵风',
+      title: '最大阵风(m/s)',
       align: 'center',
       key: 'wd3smax',
       sortable: true,

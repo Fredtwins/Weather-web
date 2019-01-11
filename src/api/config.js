@@ -10,7 +10,7 @@ export const ERR_CUSTOM = '2000'
 // 轮播图云图ip地址
 // export const httpUrlimg = 'http://10.0.1.184'
 // export const httpUrlimg = 'http://192.168.121.175'
-export const httpUrlimg = 'http://219.132.198.90:8081'
+export const httpUrlimg = 'http://219.132.198.90:8081/image/'
 
 // 图标ip地址
 // export const imgweather = 'http://192.168.121.175/images/weather/folo_10d/'

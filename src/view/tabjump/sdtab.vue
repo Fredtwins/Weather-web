@@ -223,7 +223,7 @@ export default {
     setTimeout(() => {
       this._GettablList()
     }, 200)
-    console.log(this.SiteTab)
+    this.settimechange()
   }
 }
 </script>
