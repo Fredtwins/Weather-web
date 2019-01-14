@@ -12,22 +12,22 @@
     <div class="site-content">
       <van-tabs v-model="active">
         <van-tab title="全市">
-          <qstab v-if="active===0" />
+          <qstab @saveCity="saveCity" @saveTime="saveTime" :option='option' v-if="active===0" />
         </van-tab>
         <van-tab title="禅城">
-          <cctab v-if="active===1" />
+          <cctab @saveCity="saveCity" @saveTime="saveTime" :option='option' v-if="active===1" />
         </van-tab>
         <van-tab title="南海">
-          <nhtab v-if="active===2" />
+          <nhtab @saveCity="saveCity" @saveTime="saveTime" :option='option' v-if="active===2" />
         </van-tab>
         <van-tab title="高明">
-          <gmtab v-if="active===3" />
+          <gmtab @saveCity="saveCity" @saveTime="saveTime" :option='option' v-if="active===3" />
         </van-tab>
         <van-tab title="三水">
-          <sstab v-if="active===4" />
+          <sstab @saveCity="saveCity" @saveTime="saveTime" :option='option' v-if="active===4" />
         </van-tab>
         <van-tab title="顺德">
-          <sdtab v-if="active===5" />
+          <sdtab @saveCity="saveCity" @saveTime="saveTime" :option='option' v-if="active===5" />
           <!-- <div class="bg-blur">
             <div class="content-front" v-for="(item, index) in rainArray" :key="item.index">
               <div class="hearder-titlerain clear">
@@ -77,6 +77,10 @@ export default {
   },
   data () {
     return {
+      option: {
+        selectCity: '',
+        selectTime: '',        
+      },
       loading: false,
       columns5: cityThead(this),
       data5: [
@@ -216,7 +220,17 @@ export default {
     }
   },
   methods: {
-    
+    saveCity(value) {
+      this.option.selectCity = value;
+    },
+    saveTime(value) {
+      this.option.selectTime = value;
+      console.log(this.option.selectTime)
+    }
+  },
+  watch: {
+    active(val) {
+    }
   },
   mounted () {
     

@@ -18,8 +18,17 @@
 import { cityThead, showtowthead, HourThead, SfiveTime } from '../../common/js/table.js'
 import { siteTime, TimeList, shareTime, DayTime, HourTime, Stime } from '../../api/sitetab.js'
 import { ERR_OK } from '../../api/config.js'
+import { mapMutations } from 'vuex'
 
 export default {
+  props: {
+    option: {
+      type: Object,
+      default() {
+        return {}
+      }
+    }
+  },
   data () {
     return {
       showtable: true,
@@ -66,14 +75,21 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['SET_SITETAB', 'SET_DATETIMEVAL']),
     // 首次进来下来时间
     _siteTime () {
       siteTime().then(res => {
         if (res.code === ERR_OK) {
-          console.log(res)
           this.timeList = res.data.awsTimesTimeList
-          this.model = this.cityList[0].value
-          this.model2 = res.data.awsTimesTimeList[0].value     
+          console.log(this.option.selectTime)
+          if(this.option.selectTime || this.option.selectCity) {
+            this.model = this.option.selectCity;
+            this.model2 = this.option.selectTime;
+            
+          }else {
+            this.model = this.cityList[0].value
+            this.model2 = res.data.awsTimesTimeList[0].value     
+          }     
         }
       })
     },
@@ -81,6 +97,7 @@ export default {
     stieTimechange (value) {
       siteTime().then(res => {
         if (res.code === ERR_OK) {
+          this.$emit('saveCity', value)
           if (value === '自动站时次记录') {
             this.timeList = res.data.awsTimesTimeList
             this.model2 = ''
@@ -105,6 +122,10 @@ export default {
     // 选择右边的，判断用哪个接口
     settimechange (val) {
       // console.log(this.model)
+      if(val) {
+        console.log(val)
+        this.$emit('saveTime', val)
+      }
       if (this.model === '自动站时次记录') {
         let search = {
           datetime: val,
@@ -195,6 +216,11 @@ export default {
           }
         })
       }
+      let typedateval = {
+        model: this.model,
+        val: val
+      }
+      this.SET_SITETAB(typedateval)
     },
     // 一开始进来默认显示
     _GettablList () {
@@ -212,6 +238,7 @@ export default {
   },
   mounted () {
     this._siteTime()
+    console.log(this.option, 111111)
     setTimeout(() => {
       this._GettablList()
     }, 200)

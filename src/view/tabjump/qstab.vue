@@ -30,6 +30,14 @@ export default {
       'SiteTab', 'DateTimeVal'
     ])
   },
+  props: {
+    option: {
+      type: Object,
+      default() {
+        return {}
+      }
+    }
+  },
   data () {
     return {
       showtable: true,
@@ -82,15 +90,23 @@ export default {
       siteTime().then(res => {
         if (res.code === ERR_OK) {
           this.timeList = res.data.awsTimesTimeList
-          this.model = this.cityList[0].value
-          this.model2 = res.data.awsTimesTimeList[0].value     
+          if(this.option.selectTime || this.option.selectCity) {
+            this.model = this.option.selectCity;
+            this.model2 = this.option.selectTime;
+            
+          }else {
+            this.model = this.cityList[0].value
+            this.model2 = res.data.awsTimesTimeList[0].value     
+          }
         }
       })
     },
     // 选择左边的触发事件改变右边的值
     stieTimechange (value) {
+      console.log(value);
       siteTime().then(res => {
         if (res.code === ERR_OK) {
+          this.$emit('saveCity', value)
           if (value === '自动站时次记录') {
             this.timeList = res.data.awsTimesTimeList
             this.model2 = ''
@@ -115,6 +131,11 @@ export default {
     // 选择右边的，判断用哪个接口
     settimechange (val) {
       // console.log(this.model)
+      if(val) {
+        this.$emit('saveTime', val)
+      }
+      console.log('-------------------')
+      console.log(val)
       if (this.model === '自动站时次记录') {
         let search = {
           datetime: val
@@ -218,6 +239,7 @@ export default {
     }
   },
   mounted () {
+    console.log(this.option, 834784237)
     this._siteTime()
     setTimeout(() => {
       this._GettablList()

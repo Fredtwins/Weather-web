@@ -19,7 +19,7 @@ export function cityThead (that) {
       title: '风向',
       align: 'center',
       sortable: true,
-      key: 'p'
+      key: 'windChinese'
     }, {
       title: '风速(m/s)',
       align: 'center',
