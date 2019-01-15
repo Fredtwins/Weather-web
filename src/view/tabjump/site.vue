@@ -3,10 +3,7 @@
     <!-- 头部标题 -->
     <div class="header-title clear">
       自动站点
-      <van-notice-bar
-        text="自动站查询，记录着佛山市各个地区自动站各个要素的数据。"
-        left-icon="http://img.yzcdn.cn/public_files/2017/8/10/6af5b7168eed548100d9041f07b7c616.png"
-      />
+      <van-notice-bar text="自动站查询，记录着佛山市各个地区自动站各个要素的数据。" left-icon="http://img.yzcdn.cn/public_files/2017/8/10/6af5b7168eed548100d9041f07b7c616.png" />
     </div>
     <!-- 内容 -->
     <div class="site-content">
@@ -29,19 +26,19 @@
         <van-tab title="顺德">
           <sdtab @saveCity="saveCity" @saveTime="saveTime" :option='option' v-if="active===5" />
           <!-- <div class="bg-blur">
-            <div class="content-front" v-for="(item, index) in rainArray" :key="item.index">
-              <div class="hearder-titlerain clear">
-                <div class="heardertitle">{{item.title}}</div>
-                <div class="hearder-time pull-right">{{item.titletime}}</div>
+              <div class="content-front" v-for="(item, index) in rainArray" :key="item.index">
+                <div class="hearder-titlerain clear">
+                  <div class="heardertitle">{{item.title}}</div>
+                  <div class="hearder-time pull-right">{{item.titletime}}</div>
+                </div>
+                <div class="content-rain">
+                  <div class="t-weather">25℃</div>
+                  <div class="rain-weather">时雨量(mm)0</div>
+                  <div class="fly-weather">西北风</div>
+                  <div class="tmax-weather">风速(m/s)5.9</div>
+                </div>
               </div>
-              <div class="content-rain">
-                <div class="t-weather">25℃</div>
-                <div class="rain-weather">时雨量(mm)0</div>
-                <div class="fly-weather">西北风</div>
-                <div class="tmax-weather">风速(m/s)5.9</div>
-              </div>
-            </div>
-          </div> -->
+            </div> -->
         </van-tab>
       </van-tabs>
     </div>
@@ -56,7 +53,7 @@ import nhtab from './nhtab'
 import gmtab from './gmtab'
 import sstab from './sstab'
 import sdtab from './sdtab'
-import { Tab, Tabs, Icon, NoticeBar  } from 'vant'
+import { Tab, Tabs, Icon, NoticeBar } from 'vant'
 import { cityThead } from '../../common/js/table.js'
 import { siteTab } from '../../api/sitetab.js'
 import { ERR_OK } from '../../api/config.js'
@@ -73,44 +70,44 @@ export default {
     gmtab,
     sstab,
     sdtab,
-    NoticeBar 
+    NoticeBar
   },
-  data () {
+  data() {
     return {
       option: {
         selectCity: '',
-        selectTime: '',        
+        selectTime: '',
       },
       loading: false,
       columns5: cityThead(this),
       data5: [
         {
-            1: 'John Brown',
-            2: 18,
-            3: 'New York No. 1 Lake Park',
-            4: '2016-10-03',
-            5: '2016-10-03'
+          1: 'John Brown',
+          2: 18,
+          3: 'New York No. 1 Lake Park',
+          4: '2016-10-03',
+          5: '2016-10-03'
         },
         {
-            1: 'John Brown',
-            2: 18,
-            3: 'New York No. 1 Lake Park',
-            4: '2016-10-03',
-            5: '2016-10-03'
+          1: 'John Brown',
+          2: 18,
+          3: 'New York No. 1 Lake Park',
+          4: '2016-10-03',
+          5: '2016-10-03'
         },
         {
-            1: 'John Brown',
-            2: 18,
-            3: 'New York No. 1 Lake Park',
-            4: '2016-10-03',
-            5: '2016-10-03'
+          1: 'John Brown',
+          2: 18,
+          3: 'New York No. 1 Lake Park',
+          4: '2016-10-03',
+          5: '2016-10-03'
         },
         {
-            1: 'John Brown',
-            2: 18,
-            3: 'New York No. 1 Lake Park',
-            4: '2016-10-03',
-            5: '2016-10-03'
+          1: 'John Brown',
+          2: 18,
+          3: 'New York No. 1 Lake Park',
+          4: '2016-10-03',
+          5: '2016-10-03'
         }
       ],
       model2: '',
@@ -144,7 +141,7 @@ export default {
           rightrainfeng: '东南风',
           rightrainsu: '0 ~ 3级',
           rightrainhot: '18 ~ 27℃',
-          rightraintext: '0.0 (mm)' 
+          rightraintext: '0.0 (mm)'
         },
         {
           title: '佛山市禅城区祖庙路',
@@ -153,7 +150,7 @@ export default {
           rightrainfeng: '东南风',
           rightrainsu: '0 ~ 3级',
           rightrainhot: '18 ~ 27℃',
-          rightraintext: '0.0 (mm)' 
+          rightraintext: '0.0 (mm)'
         },
         {
           title: '佛山市禅城区祖庙路',
@@ -162,7 +159,7 @@ export default {
           rightrainfeng: '东南风',
           rightrainsu: '0 ~ 3级',
           rightrainhot: '18 ~ 27℃',
-          rightraintext: '0.0 (mm)' 
+          rightraintext: '0.0 (mm)'
         },
         {
           title: '佛山市禅城区祖庙路',
@@ -171,7 +168,7 @@ export default {
           rightrainfeng: '东南风',
           rightrainsu: '0 ~ 3级',
           rightrainhot: '18 ~ 27℃',
-          rightraintext: '0.0 (mm)' 
+          rightraintext: '0.0 (mm)'
         }, {
           title: '佛山市禅城区祖庙路',
           titletime: '11',
@@ -179,7 +176,7 @@ export default {
           rightrainfeng: '东南风',
           rightrainsu: '0 ~ 3级',
           rightrainhot: '18 ~ 27℃',
-          rightraintext: '0.0 (mm)' 
+          rightraintext: '0.0 (mm)'
         },
         {
           title: '佛山市禅城区祖庙路',
@@ -188,7 +185,7 @@ export default {
           rightrainfeng: '东南风',
           rightrainsu: '0 ~ 3级',
           rightrainhot: '18 ~ 27℃',
-          rightraintext: '0.0 (mm)' 
+          rightraintext: '0.0 (mm)'
         }
       ],
       cityList: [
@@ -222,6 +219,7 @@ export default {
   methods: {
     saveCity(value) {
       this.option.selectCity = value;
+      console.log(this.option.selectCity)
     },
     saveTime(value) {
       this.option.selectTime = value;
@@ -232,8 +230,8 @@ export default {
     active(val) {
     }
   },
-  mounted () {
-    
+  mounted() {
+
   }
 }
 </script>
@@ -242,24 +240,26 @@ export default {
 .site {
   width: 100%;
   height: 100%;
-  > .header-title {
+  >.header-title {
     color: #fff;
     font-size: 2em;
     text-align: center;
     padding-top: 18px;
     background-color: #193ba8;
     padding-bottom: 4px;
-    > span {
+    >span {
       margin-left: 5px;
     }
   }
-  > .site-content {
+  >.site-content {
     margin-bottom: 4.5rem;
   }
 }
+
 .van-tabs__line {
   bottom: 4px;
 }
+
 // .home-warpper {
 //   position: absolute;
 //   top: 7.2rem;
@@ -270,54 +270,53 @@ export default {
 //   background: url('./img/bgib.png');
 //   background-size: 100% 100%;
 // }
-
 .bg-blur {
   background: url('./img/bgib.png');
   background-size: 100% 100%;
 }
+
 .bg-blur::before {
   content: "";
   display: block;
 }
+
 .content-front {
-  height: 5.5rem;
-  // text-align: center;
+  height: 5.5rem; // text-align: center;
   margin-bottom: 8px;
   margin-top: 10px;
   border: 0.1px solid #ccc;
   color: #ffffff;
-  > .hearder-titlerain {
+  >.hearder-titlerain {
     padding: 10px;
     border-bottom: 1px solid #ccc;
-    > .heardertitle {
+    >.heardertitle {
       display: inline-block;
       font-size: 1.1rem;
       font-weight: 500;
     }
-    > .hearder-time {
+    >.hearder-time {
       font-size: 1.1rem;
-      color:rgba(255,255,255,1);
-      opacity:0.6;
+      color: rgba(255, 255, 255, 1);
+      opacity: 0.6;
       display: inline-block;
     }
   }
-  > .content-rain {
+  >.content-rain {
     display: flex;
     font-size: 1.2em;
-    > .t-weather {
-      width: 25%;
-      // text-align: center;
+    >.t-weather {
+      width: 25%; // text-align: center;
       padding-left: 1rem;
     }
-    > .rain-weather {
+    >.rain-weather {
       width: 25%;
       text-align: center;
     }
-    > .fly-weather {
+    >.fly-weather {
       width: 25%;
       text-align: center;
     }
-    > .tmax-weather {
+    >.tmax-weather {
       width: 25%;
       text-align: center;
     }
@@ -328,12 +327,12 @@ export default {
   margin-top: 10px;
 }
 
-.ivu-btn-circle-outline.ivu-btn-icon-only, .ivu-btn-circle.ivu-btn-icon-only {
+.ivu-btn-circle-outline.ivu-btn-icon-only,
+.ivu-btn-circle.ivu-btn-icon-only {
   border-radius: 5px !important;
 }
 
 .ivu-icon {
   line-height: 1 !important;
 }
-
 </style>

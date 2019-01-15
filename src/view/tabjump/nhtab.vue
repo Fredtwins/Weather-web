@@ -20,7 +20,15 @@ import { siteTime, TimeList, shareTime, DayTime, HourTime, Stime } from '../../a
 import { ERR_OK } from '../../api/config.js'
 
 export default {
-  data () {
+  props: {
+    option: {
+      type: Object,
+      default() {
+        return {}
+      }
+    }
+  },
+  data() {
     return {
       showtable: true,
       showtable2: false,
@@ -67,20 +75,21 @@ export default {
   },
   methods: {
     // 首次进来下来时间
-    _siteTime () {
+    _siteTime() {
       siteTime().then(res => {
         if (res.code === ERR_OK) {
-          console.log(res)
           this.timeList = res.data.awsTimesTimeList
           this.model = this.cityList[0].value
-          this.model2 = res.data.awsTimesTimeList[0].value     
+          this.model2 = res.data.awsTimesTimeList[0].value
+          this.settimechange()
         }
       })
     },
     // 选择左边的触发事件改变右边的值
-    stieTimechange (value) {
+    stieTimechange(value, flag) {
       siteTime().then(res => {
         if (res.code === ERR_OK) {
+          this.$emit('saveCity', value)
           if (value === '自动站时次记录') {
             this.timeList = res.data.awsTimesTimeList
             this.model2 = ''
@@ -98,16 +107,24 @@ export default {
           } else if (value === '时内五分钟雨量') {
             this.timeList = res.data.awsR5mFoTimeList
             this.model2 = ''
+          };
+          if (flag) {
+            this.model = this.option.selectCity;
+            this.model2 = this.option.selectTime;
           }
+          this.settimechange()
         }
       })
     },
     // 选择右边的，判断用哪个接口
-    settimechange (val) {
+    settimechange(val) {
       // console.log(this.model)
+      if (val) {
+        this.$emit('saveTime', val)
+      }
       if (this.model === '自动站时次记录') {
         let search = {
-          datetime: val,
+          datetime: val || this.model2,
           dist: '南海区'
         }
         this.loading = true
@@ -122,9 +139,9 @@ export default {
             this.data5 = res.data
           }
         })
-      } else if (this.model === '日记录(20-20时)' && val !== undefined) {
+      } else if (this.model === '日记录(20-20时)') {
         let searchvalue = {
-          datetime2: val,
+          datetime2: val || this.model2,
           dist: '南海区'
         }
         this.loading2 = true
@@ -138,25 +155,25 @@ export default {
             this.data2 = res.data
           }
         })
-      } else if (this.model === '日记录(8-8时)' && val !== undefined) {
+      } else if (this.model === '日记录(8-8时)') {
         let searchtime = {
-          datetime2: val,
+          datetime2: val || this.model2,
           dist: '南海区'
         }
         this.loading2 = true
-        DayTime (searchtime).then(res => {
+        DayTime(searchtime).then(res => {
           if (res.code === ERR_OK) {
             this.loading2 = false
             this.showtable = false
             this.showtable2 = true
             this.showtable3 = false
             this.showtable4 = false
-            this.data2  = res.data
+            this.data2 = res.data
           }
         })
-      } else if (this.model === '时极值、雨量' && val !== undefined) {
+      } else if (this.model === '时极值、雨量') {
         let searchHourtime = {
-          datetime: val,
+          datetime: val || this.model2,
           dist: '南海区'
         }
         this.loading3 = true
@@ -168,12 +185,12 @@ export default {
             this.showtable2 = false
             this.showtable3 = true
             this.showtable4 = false
-            this.data3  = res.data
+            this.data3 = res.data
           }
         })
-      } else if (this.model === '时内五分钟雨量' && val !== undefined) {
+      } else if (this.model === '时内五分钟雨量') {
         let searchfivetime = {
-          formatTime: val,
+          formatTime: val || this.model2,
           dist: '南海区'
         }
         this.loading4 = true
@@ -197,7 +214,7 @@ export default {
       }
     },
     // 一开始进来默认显示
-    _GettablList () {
+    _GettablList() {
       let datetime = {
         datetime: this.model2,
         dist: '南海区'
@@ -210,12 +227,12 @@ export default {
       })
     }
   },
-  mounted () {
-    this._siteTime()
-    setTimeout(() => {
-      this._GettablList()
-    }, 200)
-    this.settimechange()
+  mounted() {
+    if (this.option.selectTime || this.option.selectCity) {
+      this.stieTimechange(this.option.selectCity, true)
+    } else {
+      this._siteTime()
+    }
   }
 }
 </script>
@@ -224,6 +241,7 @@ export default {
 .ivu-table-wrapper {
   margin-top: 10px;
 }
+
 .ivu-btn {
   border-radius: 5px;
 }

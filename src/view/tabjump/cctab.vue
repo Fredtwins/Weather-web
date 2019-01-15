@@ -29,7 +29,7 @@ export default {
       }
     }
   },
-  data () {
+  data() {
     return {
       showtable: true,
       showtable2: false,
@@ -77,24 +77,18 @@ export default {
   methods: {
     ...mapMutations(['SET_SITETAB', 'SET_DATETIMEVAL']),
     // 首次进来下来时间
-    _siteTime () {
+    _siteTime() {
       siteTime().then(res => {
         if (res.code === ERR_OK) {
           this.timeList = res.data.awsTimesTimeList
-          console.log(this.option.selectTime)
-          if(this.option.selectTime || this.option.selectCity) {
-            this.model = this.option.selectCity;
-            this.model2 = this.option.selectTime;
-            
-          }else {
-            this.model = this.cityList[0].value
-            this.model2 = res.data.awsTimesTimeList[0].value     
-          }     
+          this.model = this.cityList[0].value
+          this.model2 = res.data.awsTimesTimeList[0].value
+          this.settimechange()
         }
       })
     },
     // 选择左边的触发事件改变右边的值
-    stieTimechange (value) {
+    stieTimechange(value, flag) {
       siteTime().then(res => {
         if (res.code === ERR_OK) {
           this.$emit('saveCity', value)
@@ -115,20 +109,24 @@ export default {
           } else if (value === '时内五分钟雨量') {
             this.timeList = res.data.awsR5mFoTimeList
             this.model2 = ''
+          };
+          if (flag) {
+            this.model = this.option.selectCity;
+            this.model2 = this.option.selectTime;
           }
+          this.settimechange()
         }
       })
     },
     // 选择右边的，判断用哪个接口
-    settimechange (val) {
+    settimechange(val) {
       // console.log(this.model)
-      if(val) {
-        console.log(val)
+      if (val) {
         this.$emit('saveTime', val)
       }
       if (this.model === '自动站时次记录') {
         let search = {
-          datetime: val,
+          datetime: val || this.model2,
           dist: '禅城区'
         }
         this.loading = true
@@ -143,9 +141,9 @@ export default {
             this.data5 = res.data
           }
         })
-      } else if (this.model === '日记录(20-20时)' && val !== undefined) {
+      } else if (this.model === '日记录(20-20时)') {
         let searchvalue = {
-          datetime2: val,
+          datetime2: val || this.model2,
           dist: '禅城区'
         }
         this.loading2 = true
@@ -159,25 +157,25 @@ export default {
             this.data2 = res.data
           }
         })
-      } else if (this.model === '日记录(8-8时)' && val !== undefined) {
+      } else if (this.model === '日记录(8-8时)') {
         let searchtime = {
-          datetime2: val,
+          datetime2: val || this.model2,
           dist: '禅城区'
         }
         this.loading2 = true
-        DayTime (searchtime).then(res => {
+        DayTime(searchtime).then(res => {
           if (res.code === ERR_OK) {
             this.loading2 = false
             this.showtable = false
             this.showtable2 = true
             this.showtable3 = false
             this.showtable4 = false
-            this.data2  = res.data
+            this.data2 = res.data
           }
         })
-      } else if (this.model === '时极值、雨量' && val !== undefined) {
+      } else if (this.model === '时极值、雨量') {
         let searchHourtime = {
-          datetime: val,
+          datetime: val || this.model2,
           dist: '禅城区'
         }
         this.loading3 = true
@@ -189,12 +187,12 @@ export default {
             this.showtable2 = false
             this.showtable3 = true
             this.showtable4 = false
-            this.data3  = res.data
+            this.data3 = res.data
           }
         })
-      } else if (this.model === '时内五分钟雨量' && val !== undefined) {
+      } else if (this.model === '时内五分钟雨量') {
         let searchfivetime = {
-          formatTime: val,
+          formatTime: val || this.model2,
           dist: '禅城区'
         }
         this.loading4 = true
@@ -223,7 +221,7 @@ export default {
       this.SET_SITETAB(typedateval)
     },
     // 一开始进来默认显示
-    _GettablList () {
+    _GettablList() {
       let datetime = {
         datetime: this.model2,
         dist: '禅城区'
@@ -236,13 +234,12 @@ export default {
       })
     }
   },
-  mounted () {
-    this._siteTime()
-    console.log(this.option, 111111)
-    setTimeout(() => {
-      this._GettablList()
-    }, 200)
-    this.settimechange()
+  mounted() {
+    if (this.option.selectTime || this.option.selectCity) {
+      this.stieTimechange(this.option.selectCity, true)
+    } else {
+      this._siteTime()
+    }
   }
 }
 </script>
@@ -251,6 +248,7 @@ export default {
 .ivu-table-wrapper {
   margin-top: 10px;
 }
+
 .ivu-btn {
   border-radius: 5px;
 }
