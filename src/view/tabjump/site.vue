@@ -2,7 +2,7 @@
   <div class="site">
     <!-- 头部标题 -->
     <div class="header-title clear">
-      自动站点
+      自动站
       <van-notice-bar text="自动站查询，记录着佛山市各个地区自动站各个要素的数据。" left-icon="http://img.yzcdn.cn/public_files/2017/8/10/6af5b7168eed548100d9041f07b7c616.png" />
     </div>
     <!-- 内容 -->

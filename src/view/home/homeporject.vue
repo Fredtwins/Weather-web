@@ -55,7 +55,7 @@
       </div>
       <!-- 底部四要素 -->
       <div class="factor-footer">
-        <div><span></span>AQI <br><span>{{aqi}}</span></div>
+        <!-- <div><span></span>AQI <br><span>{{aqi}}</span></div> -->
         <div><span></span>气压 <br><span>{{pha}}</span></div>
         <div><span></span>湿度<br><span>{{u}}</span></div>
         <div><span></span>风向<br><span>{{windChinese}}</span></div>
@@ -488,7 +488,8 @@ export default {
       bottom: -18.4rem;
       color: #fff;
       > div {
-        width: 25%;
+        // width: 25%;
+        width: 33.33%;
         height: 5rem;
         font-size: 1.2em;
         line-height: 2.2rem;

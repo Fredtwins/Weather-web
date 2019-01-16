@@ -4,6 +4,7 @@ export function cityThead (that) {
     {
       title: '站名',
       align: 'center',
+      sortable: true,
       key: 'stationname'
     }, {
       title: '温度(℃)',
@@ -14,7 +15,7 @@ export function cityThead (that) {
       title: '时雨量(mm)',
       align: 'center',
       sortable: true,
-      key: 'wd2'
+      key: 'r1'
     }, {
       title: '风向',
       align: 'center',
@@ -34,6 +35,7 @@ export function showtowthead(that) {
     {
       title: '站名',
       align: 'center',
+      sortable: true,
       key: 'stationname'
     }, {
       title: '最低温度(℃)',
@@ -66,6 +68,7 @@ export function HourThead (that) {
       title: '站名',
       align: 'center',
       key: 'stationname',
+      sortable: true,
       width: 100,
       fixed: 'left'
     }, {
@@ -115,7 +118,7 @@ export function HourThead (that) {
     }, {
       title: '最大阵风(m/s)',
       align: 'center',
-      key: 'wd3smax',
+      key: 'wf3smax',
       sortable: true,
       width: 80
     }, {
@@ -161,6 +164,7 @@ export function SfiveTime (that) {
       title: '站名',
       align: 'center',
       key: 'stationname',
+      sortable: true,
       width: 80,
       fixed: 'left'
     }, {
@@ -235,6 +239,12 @@ export function SfiveTime (that) {
       key: '60',
       sortable: true,
       width: 60
+    }, {
+      title: '合计',
+      align: 'center',
+      key: 'total',
+      width: 60,
+      sortable: true
     }
   ]
 }

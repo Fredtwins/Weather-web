@@ -1,8 +1,6 @@
 <template>
   <div class="radar-swiper">
     <div class="header-slider">
-      <button class="swiperbtn" @click='stop'>{{titleend}}</button>
-      <button class="swiperbtn" @click='start'>{{titlestart}}</button>
       <div class="container" ref='mypp'>
         <div class="swiper-container" >
           <div class="swiper-wrapper">

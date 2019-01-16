@@ -154,7 +154,7 @@ export default {
     this._GetCloudList()
     this.$nextTick(()=>{
         this.init()
-    }, 1500)
+    })
     // setTimeout(() => {
     //   this.init()
     // }, 1500)
