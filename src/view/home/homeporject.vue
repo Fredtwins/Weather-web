@@ -380,7 +380,8 @@ export default {
   > .weathertop {
     width: 100%;
     height: 36rem;
-    background-image: url('./img/bgi.png');
+    // background-image: url('./img/bgi.png');
+    background-image: url('./img/bgimg3.png');
     background-size: 100% 100%;
     > .weathertop::before {
       content: "";
