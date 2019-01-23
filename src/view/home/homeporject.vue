@@ -299,27 +299,29 @@ export default {
       }
       option = {
         backgroundColor: '#3267b9',
-        xAxis: {
-          type: 'category',
-          data: datatime,
-          axisLabel: {
-            show: true,
-            textStyle: {
-              fontSize: '12'
-            }
-          },
-          axisLine: {
-            lineStyle: {
-              width: 3
-            }
+        tooltip : {
+          trigger: 'axis'
+        },
+        toolbox: {
+          show : true
+        },
+        calculable : true,
+        xAxis : [
+          {
+            type : 'category',
+            boundaryGap : false,
+            data : datatime
           }
-        },
-        yAxis: {
-          type: 'value'
-        },
-        series: [{
-          data: serdata,
-          type: 'line'
+        ],
+        yAxis : [
+          {
+            type : 'value'
+          }
+        ],
+        series : [
+        {
+          type:'line',
+          data: serdata
         }]
       };
       myChart.setOption(option)
